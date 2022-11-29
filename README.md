@@ -21,7 +21,7 @@ This role is currently not available on Ansible Galaxy, but you can use it
 directly as a submodule:
 
 ```
-git submodule add https://github.com/blackieops/ansible-linux-hardening roles/linux_hardening
+git submodule add https://github.com/blackieops/ansible-role-linux-hardening.git roles/blackieops.linux_hardening
 ```
 
 Then reference it in your playbook normally:
@@ -29,5 +29,5 @@ Then reference it in your playbook normally:
 ```yaml
 - hosts: all
   roles:
-    - { role: linux_hardening }
+    - { role: blackieops.linux_hardening }
 ```
