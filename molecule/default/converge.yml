@@ -1,0 +1,23 @@
+---
+- name: Prepare
+  hosts: all
+  become: true
+  tasks:
+    - name: Make a fake bootloader directory
+      ansible.builtin.file:
+        path: /boot/grub
+        state: directory
+        mode: 0755
+      when: ansible_facts["os_family"] == "Debian"
+
+    - name: Make a fake grub config
+      ansible.builtin.copy:
+        dest: /boot/grub/grub.cfg
+        content: ""
+      when: ansible_facts["os_family"] == "Debian"
+
+- name: Converge
+  hosts: all
+  become: true
+  roles:
+    - role: linux_hardening

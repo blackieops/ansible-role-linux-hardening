@@ -6,6 +6,16 @@
   tags:
     - security
 
+- name: Ensure presence of modprobe.d
+  ansible.builtin.file:
+    path: /etc/modprobe.d
+    state: directory
+    mode: 0755
+    owner: root
+    group: root
+  tags:
+    - security
+
 - name: Disable unnecessary kernel modules
   ansible.builtin.copy:
     content: install {{ item }} /bin/true
