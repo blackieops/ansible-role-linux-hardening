@@ -1,0 +1,23 @@
+---
+dependencies: []
+
+galaxy_info:
+  role_name: linux_hardening
+  author: blackieops
+  description: A baseline set of Linux system hardening tasks.
+  min_ansible_version: 2.3
+  license: "license (BSD, MIT)"
+  platforms:
+    - name: EL
+      versions:
+        - all
+
+    - name: Debian
+      versions:
+        - all
+
+    - name: Ubuntu
+      versions:
+        - all
+  galaxy_tags:
+    - security

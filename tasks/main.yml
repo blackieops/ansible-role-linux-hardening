@@ -1,0 +1,81 @@
+---
+- name: Ensure /etc/shadow permissions
+  ansible.builtin.file:
+    path: /etc/shadow
+    mode: 0400
+  tags:
+    - security
+
+- name: Disable unnecessary kernel modules
+  ansible.builtin.copy:
+    content: install {{ item }} /bin/true
+    dest: /etc/modprobe.d/99_disable_{{ item }}
+    mode: 0400
+  with_items:
+    - rds
+    - hfs
+    - hfsplus
+    - jffs2
+    - cramfs
+  tags:
+    - security
+
+- name: Remove any unnecessary default packages
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - landscape-common
+  tags:
+    - security
+
+- name: Remove any unnecessary default accounts
+  ansible.builtin.user:
+    name: "{{ item }}"
+    state: absent
+  with_items:
+    - games
+    - landscape
+    - irc
+  tags:
+    - security
+
+- name: Enable return path validation to prevent spoofing attacks
+  ansible.posix.sysctl:
+    name: net.ipv4.conf.all.rp_filter
+    value: 1
+    state: present
+    reload: true
+  tags:
+    - security
+
+- name: Disable ICMP redirect sending to limit scope of potential compromise
+  ansible.posix.sysctl:
+    name: net.ipv4.conf.all.send_redirects
+    value: 0
+    state: present
+    reload: true
+  tags:
+    - security
+
+- name: Restrict `su` to wheel only to prevent password brute-forcing
+  ansible.builtin.lineinfile:
+    line: auth required pam_wheel.so
+    path: /etc/pam.d/su
+  tags:
+    - security
+
+- name: Debian-specific hardening
+  when: ansible_facts["os_family"] == "Debian"
+  tags:
+    - security
+  block:
+    - name: Ensure /etc/gshadow permissions
+      ansible.builtin.file:
+        path: /etc/gshadow
+        mode: 0400
+
+    - name: Ensure bootloader config is only readably by root
+      ansible.builtin.file:
+        path: /boot/grub/grub.cfg
+        mode: 0400
