@@ -17,14 +17,24 @@ systems, we specifically target:
 
 ## Usage
 
-This role is currently not available on Ansible Galaxy, but you can use it
-directly as a submodule:
+Install the role by adding either the Ansible Galaxy package or Git remote to
+your `requirements.yml`:
+
+```yaml
+# via Galaxy
+- src: blackieops.linux_hardening
+
+# or via Git
+- src: https://github.com/blackieops/ansible-role-linux-hardening.git
+```
+
+Then install it with `ansible-galaxy`:
 
 ```
-git submodule add https://github.com/blackieops/ansible-role-linux-hardening.git roles/blackieops.linux_hardening
+$ ansible-galaxy install -r requirements.yml
 ```
 
-Then reference it in your playbook normally:
+Finally, you can reference the role in your playbooks:
 
 ```yaml
 - hosts: all
