@@ -21,12 +21,7 @@
     content: install {{ item }} /bin/true
     dest: /etc/modprobe.d/99_disable_{{ item }}
     mode: 0400
-  with_items:
-    - rds
-    - hfs
-    - hfsplus
-    - jffs2
-    - cramfs
+  with_items: "{{ linux_hardening_disable_modules }}"
   tags:
     - security
 
@@ -34,19 +29,15 @@
   ansible.builtin.package:
     name: "{{ item }}"
     state: absent
-  with_items:
-    - landscape-common
+  with_items: "{{ linux_hardening_remove_packages }}"
   tags:
     - security
 
-- name: Remove any unnecessary default accounts
+- name: Remove any unnecessary default users
   ansible.builtin.user:
     name: "{{ item }}"
     state: absent
-  with_items:
-    - games
-    - landscape
-    - irc
+  with_items: "{{ linux_hardening_remove_users }}"
   tags:
     - security
 

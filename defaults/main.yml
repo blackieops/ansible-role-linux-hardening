@@ -1,0 +1,16 @@
+---
+
+linux_hardening_disable_modules:
+  - rds
+  - hfs
+  - hfsplus
+  - jffs2
+  - cramfs
+
+linux_hardening_remove_packages:
+  - landscape-common
+
+linux_hardening_remove_users:
+  - games
+  - landscape
+  - irc

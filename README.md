@@ -41,3 +41,13 @@ Finally, you can reference the role in your playbooks:
   roles:
     - { role: blackieops.linux_hardening }
 ```
+
+## Configuration
+
+The defaults should provide a solid baseline for the majority of systems,
+however if you have specific needs you can configure some of the specifics.
+
+Check [the vars set in `defaults`][def] for an accounting and example of which
+tasks you can configure.
+
+[def]: ./defaults/main.yml
