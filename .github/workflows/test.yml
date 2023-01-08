@@ -8,7 +8,7 @@ name: Molecule Tests
 
 defaults:
   run:
-    working-directory: linux_hardening
+    working-directory: blackieops.linux_hardening
 
 jobs:
   molecule:
@@ -24,7 +24,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          path: linux_hardening
+          path: blackieops.linux_hardening
 
       - name: Set up Python
         uses: actions/setup-python@v4

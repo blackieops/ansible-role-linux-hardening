@@ -20,4 +20,4 @@
   hosts: all
   become: true
   roles:
-    - role: linux_hardening
+    - role: blackieops.linux_hardening
