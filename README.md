@@ -1,5 +1,7 @@
 # Security Baseline: Linux Hardening
 
+[![Molecule Tests](https://github.com/blackieops/ansible-role-linux-hardening/actions/workflows/test.yml/badge.svg)](https://github.com/blackieops/ansible-role-linux-hardening/actions/workflows/test.yml)
+
 This is an [Ansible][a] role that sets a OS security baseline for Linux
 systems. This does **not** cover any specific software such as SSH or
 firewalls, rather is only configuration and permissions for the OS itself.
