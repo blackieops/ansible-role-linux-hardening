@@ -20,7 +20,7 @@
   ansible.builtin.copy:
     content: install {{ item }} /bin/true
     dest: /etc/modprobe.d/99_disable_{{ item }}
-    mode: 0400
+    mode: "0400"
   with_items: "{{ linux_hardening_disable_modules }}"
   tags:
     - security
