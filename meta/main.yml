@@ -10,15 +10,18 @@ galaxy_info:
   platforms:
     - name: EL
       versions:
-        - 8
         - 9
 
     - name: Debian
       versions:
-        - all
+        - bookworm
 
     - name: Ubuntu
       versions:
-        - all
+        - jammy
+
+    - name: SLES
+      versions:
+        - 15
   galaxy_tags:
     - security
