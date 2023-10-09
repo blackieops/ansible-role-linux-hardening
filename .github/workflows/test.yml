@@ -20,6 +20,7 @@ jobs:
           - rockylinux8
           - ubuntu2004
           - debian11
+          - opensuseleap15
 
     steps:
       - uses: actions/checkout@v3
