@@ -18,8 +18,8 @@ jobs:
       matrix:
         distro:
           - rockylinux8
-          - ubuntu2004
-          - debian11
+          - ubuntu2204
+          - debian12
           - opensuseleap15
 
     steps:
